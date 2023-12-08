@@ -23,7 +23,8 @@ class TimeSeries(av):
             month:  The specified month of targeted time series. By default, the latest
                 month available in the API is returned. Strings should be in the format
                 YYYY-MM (e.g. 2021-07) (default '')
-            extended_hours:  Use string: 'true' or 'false'
+            extended_hours:  Set to 'true' to get extended hours trading. Use string: 'true' or 'false'
+
         """
         _FUNCTION_KEY = "TIME_SERIES_INTRADAY"
         return _FUNCTION_KEY, "Time Series ({})".format(interval), 'Meta Data'
