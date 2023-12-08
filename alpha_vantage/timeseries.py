@@ -33,7 +33,7 @@ class TimeSeries(av):
 
     @av._output_format
     @av._call_api_on_func
-    def get_daily(self, symbol, outputsize='compact'):
+    def get_daily(self, symbol, outputsize='compact', entitlement='delayed'):
         """ Return daily time series in two json objects as data and
         meta_data. It raises ValueError when problems arise
 
@@ -43,13 +43,14 @@ class TimeSeries(av):
                 'compact' and 'full; the first returns the last 100 points in the
                 data series, and 'full' returns the full-length daily times
                 series, commonly above 1MB (default 'compact')
+            entitlement: use 'delayed' for 15 minute delayed data.
         """
         _FUNCTION_KEY = "TIME_SERIES_DAILY"
         return _FUNCTION_KEY, 'Time Series (Daily)', 'Meta Data'
 
     @av._output_format
     @av._call_api_on_func
-    def get_daily_adjusted(self, symbol, outputsize='compact'):
+    def get_daily_adjusted(self, symbol, outputsize='compact', entitlement='delayed'):
         """ Return daily adjusted (date, daily open, daily high, daily low,
         daily close, daily split/dividend-adjusted close, daily volume)
         time series in two json objects as data and
@@ -61,6 +62,7 @@ class TimeSeries(av):
                 'compact' and 'full; the first returns the last 100 points in the
                 data series, and 'full' returns the full-length daily times
                 series, commonly above 1MB (default 'compact')
+            entitlement: use 'delayed' for 15 minute delayed data.
         """
         _FUNCTION_KEY = "TIME_SERIES_DAILY_ADJUSTED"
         return _FUNCTION_KEY, 'Time Series (Daily)', 'Meta Data'
