@@ -7,13 +7,15 @@ class TimeSeries(av):
     """
     @av._output_format
     @av._call_api_on_func
-    def get_intraday(self, symbol, interval='15min', outputsize='compact', month='', extended_hours='true'):
+    def get_intraday(self, symbol, interval='15min',
+                     outputsize='compact', month='', extended_hours='true',
+                     entitlement='delayed'):
         """ Return intraday time series in two json objects as data and
         meta_data. It raises ValueError when problems arise
 
         Keyword Arguments:
             symbol:  the symbol for the equity we want to get its data
-            interval:  time interval between two conscutive values,
+            interval:  time interval between two consecutive values,
                 supported values are '1min', '5min', '15min', '30min', '60min'
                 (default '15min')
             outputsize:  The size of the call, supported values are
@@ -24,7 +26,7 @@ class TimeSeries(av):
                 month available in the API is returned. Strings should be in the format
                 YYYY-MM (e.g. 2021-07) (default '')
             extended_hours:  Set to 'true' to get extended hours trading. Use string: 'true' or 'false'
-
+            entitlement: use 'delayed' for 15 minute delayed data.
         """
         _FUNCTION_KEY = "TIME_SERIES_INTRADAY"
         return _FUNCTION_KEY, "Time Series ({})".format(interval), 'Meta Data'
